@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Repoframework.Repository.Enum;
 using Repoframework.Repository.Interfaces;
 using user.Model;
 
@@ -8,10 +9,11 @@ namespace user.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IRepositoryBase<User> _repositoryBase;
-        public UserController(IRepositoryBase<User> repositoryBase)
+        private readonly IConfigurationDB _db;
+        private readonly IFactoryDatabase _factory;
+        public UserController(IConfiguration configuration)
         {
-            _repositoryBase = repositoryBase;
+            _db = _factory.CreateConnection(ETypeDatabase.SqlServer, configuration.GetConnectionString("SqlServer").ToString());
         }
 
 
@@ -19,7 +21,7 @@ namespace user.Controllers
         public async Task<ActionResult> Get()
         {
             var sql = @"SELECT Id, Name, Age FROM Users";
-            var users = await _repositoryBase.GetAll(sql);
+            var users = await _db.GetAll<User>(sql);
             if (users is not null)
                 return Ok(users);
             return NoContent();
@@ -30,7 +32,7 @@ namespace user.Controllers
         {
             var user = new User(req.Name, req.Age);
             var sql = @"INSERT INTO Users(Id, Name, Age) VALUES (@id, @name, @age)";
-            await _repositoryBase.Create(new { id = user.Id, name = user.Name, age = user.Age }, sql);
+            await _db.Create(new { id = user.Id, name = user.Name, age = user.Age }, sql);
             return Created();
         }
     }

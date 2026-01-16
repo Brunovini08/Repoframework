@@ -57,13 +57,13 @@ namespace Repoframework.Repository.Implementations.Data
             }
         }
 
-        public async Task<IEnumerable<T>> GetAll<T>(string sql, object objectReturn)
+        public async Task<IEnumerable<T>> GetAll<T>(string sql)
         {
             try
             {
                 if (_connection is null)
                     throw new InvalidOperationException("Database connection is not established. Call Connection() method first.");
-                return await _connection.QueryAsync<T>(sql, objectReturn);
+                return await _connection.QueryAsync<T>(sql);
             }
             catch (SqlException ex)
             {
