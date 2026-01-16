@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Repoframework.Repository.Interfaces
 {
-    public interface IConfigurationDB<TConnection>
+    public interface IConfigurationDB
     {
-        public TConnection Connection();
+        public void Connection();
+        public void Dispose();
     }
 }
