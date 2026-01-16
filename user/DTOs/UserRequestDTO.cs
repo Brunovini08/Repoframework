@@ -1,4 +1,4 @@
-﻿namespace user.DTOs
+﻿namespace User.API.DTOs
 {
     public class UserRequestDTO
     {
