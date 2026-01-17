@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Repoframework.Repository.Interfaces;
+using Repoframework.Repository.Utils.settings;
 using System.Data;
 
 namespace Repoframework.Repository.Implementations.Data.SqlServer

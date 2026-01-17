@@ -1,6 +1,5 @@
-using Repoframework.Repository.Implementations;
-using Repoframework.Repository.Implementations.Data.SqlServer;
-using Repoframework.Repository.Interfaces;
+using Repoframework.Repository.Utils.extensions;
+using Repoframework.Repository.Utils.settings;
 using User.API.Model;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("ConnectionStrings"));
-builder.Services.AddSingleton<IConfigurationDB, DatabaseSqlServer>();
-builder.Services.AddSingleton(typeof(IRepositoryBase), typeof(RepositoryBase));
-builder.Services.AddSingleton<RepositoryUser>();
+builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
+
+builder.Services.AddCoreDependencies(builder.Configuration, opt =>
+{
+    opt.ConnectionString = builder.Configuration.GetSection("ConnectionStrings")["ConnectionString"];
+});
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 

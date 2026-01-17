@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repoframework.Repository.Implementations.Data.MongoDB
+namespace Repoframework.Repository.Utils.settings
 {
     public class MongoDBSettings
     {
