@@ -10,8 +10,8 @@ namespace User.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly RepositoryUser _repositoryBase;
-        public UserController(RepositoryUser repositoryBase)
+        private readonly IRepositoryUser _repositoryBase;
+        public UserController(IRepositoryUser repositoryBase)
         {
             _repositoryBase = repositoryBase;
         }
@@ -21,7 +21,7 @@ namespace User.API.Controllers
         {
             var sql = @"SELECT Id, Name, Age FROM Users";
             var users = await _repositoryBase.GetAll<Users>(sql);
-            if (users is not null)
+            if (users is not null && users.Count() > 0)
                 return Ok(users);
             return NoContent();
         }
