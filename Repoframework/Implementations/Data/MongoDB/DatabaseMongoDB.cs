@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Repoframework.Repository.Interfaces;
+using Repoframework.Repository.Utils.settings;
 using System;
 using System.Collections.Generic;
 using System.Text;
