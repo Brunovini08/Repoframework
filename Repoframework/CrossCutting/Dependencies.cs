@@ -8,7 +8,7 @@ namespace Repoframework.CrossCutting
 {
     public class Dependencies
     {
-        public static IServiceCollection Add(IServiceCollection services, Action<MongoDBSettings> action)
+        public static IServiceCollection AddDependencies(IServiceCollection services, Action<MongoDBSettings> action)
         {
             var options = new MongoDBSettings();
             action(options);
