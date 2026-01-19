@@ -1,12 +1,8 @@
-﻿using Azure.Core;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Repoframework.Domain.Infra;
 using Repoframework.Domain.Interfaces;
 using Repoframework.Infra.Implementations.Data.MongoDB;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Repoframework.CrossCutting
 {
