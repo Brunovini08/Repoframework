@@ -1,4 +1,3 @@
 <Solution>
-  <Project Path="Repoframework/Repoframework.Repository.csproj" />
-  <Project Path="user/User.API.csproj" />
+  <Project Path="Repoframework/Repoframework.csproj" />
 </Solution>
