@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repoframework.Repository.Enum
+namespace Repoframework.Domain.Enum
 {
     public enum ETypeDatabase
     {
