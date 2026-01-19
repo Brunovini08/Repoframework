@@ -33,9 +33,9 @@ namespace Repoframework.Infra.Implementations.Data.MongoDB
             return await _collection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<IAsyncCursor<TDocument>> FindOneAsync(Expression<Func<TDocument, bool>> filter)
+        public async Task<TDocument> FindOneAsync(Expression<Func<TDocument, bool>> filter)
         {
-            return await _collection.FindAsync(filter);
+            return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
         public async Task InsertManyAsync(ICollection<TDocument> documents)
@@ -48,9 +48,9 @@ namespace Repoframework.Infra.Implementations.Data.MongoDB
             await _collection.InsertOneAsync(document);
         }
 
-        public async Task ReplaceAsync(Expression<Func<TDocument, bool>> filter, TDocument document)
+        public async Task UpdateAsync(FilterDefinition<TDocument> filter, UpdateDefinition<TDocument> document)
         {
-            await _collection.ReplaceOneAsync(filter, document);
+            await _collection.FindOneAndUpdateAsync(filter, document);
         }
     }
 }

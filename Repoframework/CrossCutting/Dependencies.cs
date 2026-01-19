@@ -15,7 +15,7 @@ namespace Repoframework.CrossCutting
             services.Configure<MongoDBSettings>(action);
             services.AddScoped(typeof(IRepositoryBase<>), typeof(Repositorybase<>));
             services.AddSingleton<IMongoClient,  MongoClient>();
-            services.AddSingleton<IDatabaseMongoDB, DatabaseMongoDB>();
+            services.AddScoped<IDatabaseMongoDB, DatabaseMongoDB>();
             return services;
         }
     }

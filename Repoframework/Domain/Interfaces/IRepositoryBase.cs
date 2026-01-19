@@ -9,7 +9,7 @@ namespace Repoframework.Domain.Interfaces
         Task InsertOneAsync(TDocument document);
         Task InsertManyAsync(ICollection<TDocument> documents);
         Task<IEnumerable<TDocument>> FindAsync();
-        Task<IAsyncCursor<TDocument>> FindOneAsync(Expression<Func<TDocument, bool>> filter);
+        Task <TDocument> FindOneAsync(Expression<Func<TDocument, bool>> filter);
         Task ReplaceAsync(Expression<Func<TDocument, bool>> filter, TDocument document);
         Task DeleteOneAsync(Expression<Func<TDocument, bool>> filter);
         Task DeleteManyAsync(Expression<Func<TDocument, bool>> filter);
